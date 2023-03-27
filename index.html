@@ -4,12 +4,96 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors DApp</title>
+    <link rel="stylesheet" href="./css/main.css">
     <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
     <script src = "script.js"></script>
   </head>
   <body>
-    <div class="container">
-    <center>
+
+    <nav class="nav">
+        <div class="nav-row">
+            <a href="./index.html" class="logo">Rock Paper Scissors</a>
+        </div>
+        <button class="connect-wallet">Connect Wallet</button>
+    </nav>
+
+    <main class="section">
+        <div class="container">
+            <h1 class="title-1">Choose your weapon!</h1>
+            <input type="number" class="bet" min="0.0001" step="0.0001" placeholder="Set your bet in BNB" >
+            <div class="choice-wrapper">
+                <button class="choice-buttons ">
+                    <img src="./img/rock.svg" alt="Choice">
+                    Rock
+                </button>
+                <button class="choice-buttons">
+                    <img src="./img/paper.svg" alt="Choice">
+                    Paper
+                </button>
+                <button class="choice-buttons">
+                    <img src="./img/scissors.svg" alt="Choice">
+                    Scissors
+                </button>
+            </div>
+            <button class="create-game">LFG!</button>
+        </div>
+        <!-- <div class="game-statistics">
+            <h2 class="title-2">Games statistics</h2>
+            <table class="statistics-table">
+                <thead>
+                    <tr>
+                        <th>Wallet Address</th>
+                        <th>Win or Lose</th>
+                        <th>Bet</th>
+                        <th>Transaction Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0x123456789abcdef</td>
+                        <td>Win</td>
+                        <td>0.01 BNB</td>
+                        <td><a href="#">tx/0x123456789abcdef</a></td>
+                    </tr>
+                    <tr>
+                        <td>0x987654321fedcba</td>
+                        <td>Lose</td>
+                        <td>0.05 BNB</td>
+                        <td><a href="#">tx/0x987654321fedcba</a></td>
+                    </tr>
+                    <tr>
+                        <td>0xfedcba987654321</td>
+                        <td>Win</td>
+                        <td>0.02 BNB</td>
+                        <td><a href="#">tx/0xfedcba987654321</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>     -->
+    </main>
+
+    <footer class="footer">
+        
+        <div class="footer-wrapper">
+            <ul class="social">
+                <li class="social__item">
+                    <a href="https://github.com/CyberSparkEth" target="_blank"><img src="./img/gitHub.svg" alt="Link"></a>
+                </li>
+                <li class="social__item">
+                    <a href="https://testnet.bscscan.com/address/0x23Fd3fA2A87Aa61Be53C6c87418D41417B5F70c1#code" 
+                    target="_blank">
+                    <img src="./img/binance.svg" alt="Link">
+                    </a>
+                </li>
+            </ul>
+            <div class="copyright">
+                <p>© 2023 CyberSparkEth</p>
+            </div>
+        </div>
+        
+    </footer>
+
+    <!-- <div class="container">
       <h1>Rock Paper Scissors Dаpp</h1>
     <div>
         <label for="choice">Choose your move:</label>
@@ -24,7 +108,7 @@
         <input type="number" id="bet" min="0" step="0.0001" />
       </div>
       <button onclick="gameCreate()">Create Game</button>
-    </center>
-    </div>
+    </div> -->
+
   </body>
 </html>

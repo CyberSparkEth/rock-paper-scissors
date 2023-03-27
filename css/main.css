@@ -1,0 +1,310 @@
+@import "./reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Shantell+Sans&display=swap');
+
+/* font-family: 'Climate Crisis', cursive;
+font-family: 'Shantell Sans', cursive; */
+:root {
+    --black: #292929;
+    --withe: #fff;
+    --blue: #0000ff;
+
+    --page-bg-start: var(--black);
+    --page-bg-end: var(--withe);
+    --text-color: var(--black);
+    --connect-wallet: var(--blue);
+    --cnct-wlt-text: var(--withe);
+    --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
+
+
+
+}
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    font-family: 'Shantell Sans', cursive;
+    letter-spacing: 0;
+
+    background-image: linear-gradient(to bottom right, var(--page-bg-start), var(--page-bg-end));
+    color: var(--text-color);
+}
+
+/* Nav */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Style the logo */
+  .logo {
+    font-family: 'Climate Crisis', cursive;
+    letter-spacing: 0.2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Style the connect wallet button */
+  .connect-wallet {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .connect-wallet:hover {
+    background-color: #eee;
+  }
+  
+  .connect-wallet:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+/* .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 50px;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Climate Crisis', cursive;
+    font-size: 40px;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+}
+
+.connect-wallet {
+    position: relative;
+    top: 25px;
+    right: -23%;
+    padding: 5px;
+    font-size: auto;
+
+    border-radius: 5px;
+    border: solid 1px #292929;
+    background-color: var(--connect-wallet);
+    color: var(--cnct-wlt-text);
+    transition: opacity 0.2s ease-in;
+}
+
+.connect-wallet:hover {
+    opacity: 0.8;
+}
+
+.connect-wallet:active {
+    position: relative;
+    top: 26px;
+} */
+
+/* Style the main section */
+.section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Style the container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.title-1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bet {
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.choice-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.choice-buttons:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .choice-buttons:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+.choice-buttons img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.choice-buttons.active {
+    transform: translateY(-10px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+  }
+
+.create-game {
+    margin: 20px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #008CBA;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.create-game:hover {
+    background-color: #006080;
+}
+
+/* Style the game statistics
+.game-statistics {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+.title-2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.statistics-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.statistics-table th,
+.statistics-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.statistics-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.statistics-table td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.statistics-table td a:hover {
+    text-decoration: underline;
+}
+
+Style the game statistics table
+.statistics-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.statistics-table th,
+.statistics-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.statistics-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+} */
+
+/* Style the footer */
+.footer {
+    margin-top: auto;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+}
+  
+/* Center the content in the footer */
+.footer-wrapper {
+    display: table-row;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+/* Style the social media icons */
+.social {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+  
+.social__item {
+    margin-right: 1rem;
+}
+  
+.social__item a img {
+    width: 30px;
+    height: 30px;
+}
+  
+/* Style the copyright text */
+p {
+    position: relative;
+    top: 95%;
+    right: 10%;
+    font-size: 0.8rem;
+}
