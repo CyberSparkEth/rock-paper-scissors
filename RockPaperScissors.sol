@@ -4,16 +4,24 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/VRFV2WrapperConsumerBase.sol";
 
 contract RockPaperScissors is VRFV2WrapperConsumerBase {
-
-    modifier onlyOwner{
+    modifier onlyOwner() {
         require(msg.sender == owner);
         _;
     }
 
     address owner;
 
-    enum Choice { None, Rock, Paper, Scissors }
-    enum Outcome { Tie, PlayerWins, BotWins }
+    enum Choice {
+        None,
+        Rock,
+        Paper,
+        Scissors
+    }
+    enum Outcome {
+        Tie,
+        PlayerWins,
+        BotWins
+    }
 
     event GameCreated(uint256 gameId, address player, uint256 bet);
     event GameCompleted(uint256 gameId, Outcome outcome);
@@ -33,10 +41,9 @@ contract RockPaperScissors is VRFV2WrapperConsumerBase {
         bool completed;
     }
 
-    mapping (address => uint256) public balances;
-    mapping (uint256 => Game) public games;
-    mapping(uint256 => RequestStatus)
-        public s_requests;
+    mapping(address => uint256) public balances;
+    mapping(uint256 => Game) public games;
+    mapping(uint256 => RequestStatus) public s_requests;
 
     uint32 callbackGasLimit = 400000;
     uint16 requestConfirmations = 3;
@@ -45,18 +52,30 @@ contract RockPaperScissors is VRFV2WrapperConsumerBase {
     address wrapperAddress = 0x699d428ee890d55D56d5FC6e26290f3247A762bd;
 
     constructor()
+        payable
         VRFV2WrapperConsumerBase(linkAddress, wrapperAddress)
-        payable{
-            owner = msg.sender;
-        }
+    {
+        owner = msg.sender;
+    }
 
     function createGame(Choice choice) public payable {
         require(msg.value > 0, "Bet amount must be greater than 0");
         require(choice != Choice.None, "Invalid choice");
-        uint256 gameId = requestRandomness(callbackGasLimit, requestConfirmations, numWords);
-        games[gameId] = Game(msg.sender, msg.value, Choice.None, Choice.None, Outcome.Tie, false);
+        uint256 gameId = requestRandomness(
+            callbackGasLimit,
+            requestConfirmations,
+            numWords
+        );
+        games[gameId] = Game(
+            msg.sender,
+            msg.value,
+            Choice.None,
+            Choice.None,
+            Outcome.Tie,
+            false
+        );
         games[gameId].playerChoice = choice;
-        Choice botChoice = Choice(uint256(gameId) % 3 + 1);
+        Choice botChoice = Choice((uint256(gameId) % 3) + 1);
         games[gameId].botChoice = botChoice;
         completeGame(gameId);
         emit GameCreated(gameId, msg.sender, msg.value);
@@ -79,9 +98,14 @@ contract RockPaperScissors is VRFV2WrapperConsumerBase {
         if (game.playerChoice == game.botChoice) {
             game.outcome = Outcome.Tie;
             payable(msg.sender).transfer(game.bet);
-        } else if ((game.playerChoice == Choice.Rock && game.botChoice == Choice.Scissors) ||
-                (game.playerChoice == Choice.Paper && game.botChoice == Choice.Rock) ||
-                (game.playerChoice == Choice.Scissors && game.botChoice == Choice.Paper)) {
+        } else if (
+            (game.playerChoice == Choice.Rock &&
+                game.botChoice == Choice.Scissors) ||
+            (game.playerChoice == Choice.Paper &&
+                game.botChoice == Choice.Rock) ||
+            (game.playerChoice == Choice.Scissors &&
+                game.botChoice == Choice.Paper)
+        ) {
             game.outcome = Outcome.PlayerWins;
             payable(msg.sender).transfer(game.bet * 2);
         } else {
@@ -100,7 +124,7 @@ contract RockPaperScissors is VRFV2WrapperConsumerBase {
         require(address(this).balance > 0, "Insufficient balance");
         payable(msg.sender).transfer(address(this).balance);
     }
-    
+
     function withdrawLink() public onlyOwner {
         LinkTokenInterface link = LinkTokenInterface(linkAddress);
         require(

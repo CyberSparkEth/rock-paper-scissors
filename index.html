@@ -14,62 +14,47 @@
         <div class="nav-row">
             <a href="./index.html" class="logo">Rock Paper Scissors</a>
         </div>
-        <button class="connect-wallet">Connect Wallet</button>
+        <button onclick="connectWallet()" class="connect-wallet">Connect Wallet</button>
+        <button onclick="logout()" class="logout">Logout</button>
     </nav>
+
+    <div class="popup-container">
+        <button onclick="closePopup()" class="close-popup">&times;</button>
+        <div class="game-statistics">
+            <h2 class="title-2">Games statistics</h2>
+            <table class="statistics-table">
+                <thead>
+                    <tr>
+                        <th>Bet</th>
+                        <th>Player choice</th>
+                        <th>Bot choice</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody id="statistics-data">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
     <main class="section">
         <div class="container">
             <h1 class="title-1">Choose your weapon!</h1>
             <input type="number" class="bet" min="0.0001" step="0.0001" placeholder="Set your bet in BNB" >
             <div class="choice-wrapper">
-                <button class="choice-buttons ">
-                    <img src="./img/rock.svg" alt="Choice">
-                    Rock
+                <button class="choice-buttons">
+                    <img src="./img/rock.png" alt="Choice">Rock
                 </button>
                 <button class="choice-buttons">
-                    <img src="./img/paper.svg" alt="Choice">
-                    Paper
+                    <img src="./img/paper.png" alt="Choice">Paper
                 </button>
                 <button class="choice-buttons">
-                    <img src="./img/scissors.svg" alt="Choice">
-                    Scissors
+                    <img src="./img/scissors.png" alt="Choice">Scissors
                 </button>
             </div>
-            <button class="create-game">LFG!</button>
+            <button onclick="gameCreate()" class="create-game" >LFG!</button>
+            <button onclick="showLastGame()" class="show-statistic">Last game</button>
         </div>
-        <!-- <div class="game-statistics">
-            <h2 class="title-2">Games statistics</h2>
-            <table class="statistics-table">
-                <thead>
-                    <tr>
-                        <th>Wallet Address</th>
-                        <th>Win or Lose</th>
-                        <th>Bet</th>
-                        <th>Transaction Link</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0x123456789abcdef</td>
-                        <td>Win</td>
-                        <td>0.01 BNB</td>
-                        <td><a href="#">tx/0x123456789abcdef</a></td>
-                    </tr>
-                    <tr>
-                        <td>0x987654321fedcba</td>
-                        <td>Lose</td>
-                        <td>0.05 BNB</td>
-                        <td><a href="#">tx/0x987654321fedcba</a></td>
-                    </tr>
-                    <tr>
-                        <td>0xfedcba987654321</td>
-                        <td>Win</td>
-                        <td>0.02 BNB</td>
-                        <td><a href="#">tx/0xfedcba987654321</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>     -->
     </main>
 
     <footer class="footer">

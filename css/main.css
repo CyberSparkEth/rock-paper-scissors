@@ -6,17 +6,15 @@ font-family: 'Shantell Sans', cursive; */
 :root {
     --black: #292929;
     --withe: #fff;
-    --blue: #0000ff;
+    --dark-grey: #424242;
+    --light-grey: #f2f2f2;
+    --orange: #FFA07A;
 
-    --page-bg-start: var(--black);
-    --page-bg-end: var(--withe);
+    --page-bg-start: var(--dark-grey);
+    --page-bg-end: var(--light-grey);
     --text-color: var(--black);
-    --connect-wallet: var(--blue);
-    --cnct-wlt-text: var(--withe);
+    --accent: var(--orange);
     --box-shadow: 0px 5px 35px rgba(0, 0, 0, 0.8);
-
-
-
 }
 
 html, body {
@@ -38,22 +36,32 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--page-bg-start);
   }
   
   /* Style the logo */
   .logo {
-    font-family: 'Climate Crisis', cursive;
-    letter-spacing: 0.2rem;
+    font-family: 'Climate Crisis';
+    letter-spacing: 0.3rem;
     font-size: 2rem;
-    font-weight: bold;
-    text-decoration: none;
-    color: #fff;
+    color: var(--accent);
   }
   
   /* Style the connect wallet button */
   .connect-wallet {
+    display: block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .logout {
+    display: none;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border: none;
@@ -72,47 +80,6 @@ html, body {
     transform: translateY(2px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
-
-/* .nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 50px;
-}
-
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Climate Crisis', cursive;
-    font-size: 40px;
-    letter-spacing: 0.5px;
-    color: var(--text-color);
-}
-
-.connect-wallet {
-    position: relative;
-    top: 25px;
-    right: -23%;
-    padding: 5px;
-    font-size: auto;
-
-    border-radius: 5px;
-    border: solid 1px #292929;
-    background-color: var(--connect-wallet);
-    color: var(--cnct-wlt-text);
-    transition: opacity 0.2s ease-in;
-}
-
-.connect-wallet:hover {
-    opacity: 0.8;
-}
-
-.connect-wallet:active {
-    position: relative;
-    top: 26px;
-} */
 
 /* Style the main section */
 .section {
@@ -147,6 +114,10 @@ html, body {
     border: 2px solid #ccc;
     border-radius: 5px;
     text-align: center;
+}
+
+.bet::placeholder {
+    color: var(--text-color);
 }
 
 .choice-wrapper {
@@ -184,12 +155,12 @@ html, body {
     margin-bottom: 10px;
 }
 
-.choice-buttons.active {
+.choice-buttons.choice-active {
     transform: translateY(-10px);
     box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
   }
 
-.create-game {
+.create-game, .show-statistic {
     margin: 20px 0;
     padding: 10px;
     width: 100%;
@@ -197,61 +168,54 @@ html, body {
     font-size: 20px;
     font-weight: bold;
     color: #fff;
-    background-color: #008CBA;
+    background-color: var(--page-bg-start);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
 }
 
-.create-game:hover {
-    background-color: #006080;
+.create-game:hover, .show-statistic:hover {
+    background-color: var(--accent);
 }
 
-/* Style the game statistics
+/* Style the game statistics */
+
+.popup-container {
+    display: none;
+    padding: 10px;
+    min-width: 500px;
+    min-height: 250px;
+    position:fixed;
+    top: 25svh;
+    left: 30dvw;
+    background-color: rgba(255, 255, 255);
+    border-radius: 10px;
+    z-index: 9999;
+}
+
+.close-popup {
+    margin-left: 95%;
+    font-size: 1.25rem;
+}
+
+/* Styles for game statistics popup */
 .game-statistics {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 700px;
+    margin: auto;
+    text-align: center;
 }
 
 .title-2 {
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
     margin-bottom: 20px;
 }
 
-.statistics-table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.statistics-table th,
-.statistics-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-.statistics-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.statistics-table td a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.statistics-table td a:hover {
-    text-decoration: underline;
-}
-
-Style the game statistics table
+/* Style the game statistics table */
 .statistics-table {
     width: 100%;
     border-collapse: collapse;
@@ -267,7 +231,7 @@ Style the game statistics table
 .statistics-table th {
     background-color: #f2f2f2;
     font-weight: bold;
-} */
+}
 
 /* Style the footer */
 .footer {
@@ -305,6 +269,6 @@ Style the game statistics table
 p {
     position: relative;
     top: 95%;
-    right: 10%;
+    right: 45vw;
     font-size: 0.8rem;
 }
